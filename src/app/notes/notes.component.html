@@ -1,0 +1,58 @@
+<div class="notes-comp">
+  <!-- Notes Header -->
+  <header class="notes-header">
+    <h4>Cupidatat cillum pariatur.</h4>
+  </header>
+  <!-- End Notes Header -->
+  <section class="testing-container">
+    <button type="button" class="btn btn-cta" (click)="LoadNotes()">
+        Load notes
+      </button>
+    <button type="button" class="btn btn-cta" (click)="clearNotes()">
+        Clear notes
+      </button>
+  </section>
+  <!-- Note -->
+  <section class="notes" *ngIf="notesDt && notesDt.length" [class.max-height]="isMaxHeight" >
+
+    <ul class="note-list-container" appHeightMatch (changeHeight)="hasChangeHandler($event)">
+
+      <li class="note" *ngFor="let note of notesDt">
+        <p class="note-headline">{{user.name}} {{note.timestamp}}</p>
+        <p>{{note.desc}} - {{note.totalIncome}}</p>
+      </li>
+
+    </ul>
+
+  </section>
+  <!-- End Note -->
+
+  <!-- Note Form Container-->
+  <section class="notes-form-container">
+
+    <!-- End Note Form -->
+    <form novalidate [formGroup]="noteForm">
+
+      <label>Add a new note</label>
+
+      <!-- Add Note -->
+      <div class="note-user-input-container">
+        <textarea class="note-user-input" name="note-user-input" id="note-user-input" cols="30" rows="10" #textCount formControlName="userNote"></textarea>
+      </div>
+
+      <!-- Add Note CTA -->
+      <div class="note-cta-container text-right">
+        <p class="pull-left">
+          {{2000 - textCount.value.length}}
+        </p>
+        <button type="button" class="btn btn-cta" (click)="addNotes()">
+          Add notes
+        </button>
+      </div>
+
+    </form>
+    <!-- End Note Form -->
+
+  </section>
+  <!-- Note Form Container-->
+</div>

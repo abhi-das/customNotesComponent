@@ -1,0 +1,102 @@
+
+header, section, form {
+    display: block;
+}
+
+h4, p, form {
+    margin: 0;
+    padding: 0;
+}
+
+.notes-comp {
+    font-family: 'Slabo 27px', serif;
+    width: 30em;
+    margin: auto;
+    padding: 0;
+    border-radius: 2px;
+    border: 1px solid #c0c0c0;
+}
+.notes-header {
+    background: #5c91c7;
+    padding: 1em;
+    color: white;
+}
+.note-user-input-container {
+    padding: .5em;
+    border: 1px solid #c0c0c0;
+}
+
+.text-right { 
+    text-align: right;
+}
+
+.pull-right {
+    float: right; 
+}
+
+.pull-left {
+    float: left;
+}
+
+.note-cta-container  {
+    clear: both;
+    margin-bottom: 2em;
+    .btn {
+        border: 0;
+        outline: none;
+    
+        &.btn-cta {
+            background: rgb(80, 121, 20);
+            color: white;
+            border-radius: 2px;
+            padding: .5em 1em;
+        }
+    }
+
+}
+
+.notes {
+    margin: 1em;
+    
+    &.max-height {
+        height: 200px;
+        overflow-y: auto;
+    }
+
+    & ul {
+
+        margin: 0;
+        padding: 0;
+
+        & .note {
+            list-style: none;
+            padding: .5em;
+            background: #eae8e8;
+            margin-bottom: .5em;
+        }
+    }
+
+    p {
+        margin-bottom: .5em;
+    }
+
+    .note-headline {
+        font-weight: 700;
+    }
+}
+
+.note-user-input-container {
+    margin-bottom: 1em;
+
+    & .note-user-input {
+        width: 100%;
+    }
+}
+
+.notes-form-container {
+    padding: 0 1em;
+}
+
+.testing-container {
+    margin: 1em;
+}
