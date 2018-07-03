@@ -7,10 +7,7 @@ export function BenefitsReducer(state: IBenefitState = INITIAL_BENEFIT_STATE, ac
             return {
                 benefits: [
                     ...state.benefits,
-                    {
-                        name: action.name,
-                        desc: action.desc
-                    }
+                    action.benefits
                 ]
             }
         
