@@ -4,6 +4,11 @@ import { NotesService } from './notes.service';
 import { FormControl, FormGroup } from '@angular/forms';
 import { HttpErrorResponse } from '@angular/common/http';
 
+import { NgRedux, select } from '@angular-redux/store';
+import { ITaskState } from '../reducers/state';
+import { Observable } from 'rxjs';
+// import { Store } from 'redux';
+
 @Component({
   selector: 'app-notes',
   templateUrl: './notes.component.html',
@@ -11,7 +16,7 @@ import { HttpErrorResponse } from '@angular/common/http';
   providers: [NotesService]
 })
 export class NotesComponent implements OnInit {
-  constructor(private _noteServices: NotesService) {}
+  constructor(private _noteServices: NotesService, private _ngRedux: NgRedux<any>) {}
 
   noteForm: FormGroup;
   notesDt: Array<{}>;
@@ -19,7 +24,19 @@ export class NotesComponent implements OnInit {
   heightLimit: Number;
   isMaxHeight: Boolean;
 
+  @select('Task') taskStore: Observable<any>;
+
   ngOnInit() {
+
+    this.taskStore.subscribe(res => {
+            
+        console.log(this._ngRedux.getState().Task);
+
+      }, error => {
+          console.error(error); 
+      });
+    
+
     this.user = {
       name: 'Meichol Chevron'
     };
@@ -42,6 +59,16 @@ export class NotesComponent implements OnInit {
 
     this.notesDt.unshift(newNote);
     this.noteForm.reset();
+
+    let tk = {
+      name: 'new',
+      desc: 'Exercitation nulla eiusmod qui aute nostrud dolor enim ut minim.',
+      date: new Date()
+    }
+
+    this._ngRedux.dispatch({ type: 'ADD_TASK',  tasks: tk });
+
+    
   }
 
   LoadNotes(): void {

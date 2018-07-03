@@ -7,6 +7,9 @@ import { NotesComponent } from './notes/notes.component';
 import { HttpClientModule } from '@angular/common/http';
 import { HeightMatchDirective } from './common/directive/height-match.directive';
 
+import { NgReduxModule, NgRedux, DevToolsExtension } from '@angular-redux/store';
+import { IBenefitState, INITIAL_BENEFIT_STATE, ITaskState, INITIAL_STATE } from './reducers/state';
+import { combine } from './reducers/reducers';
 
 @NgModule({
   declarations: [
@@ -17,9 +20,25 @@ import { HeightMatchDirective } from './common/directive/height-match.directive'
   imports: [
     BrowserModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    NgReduxModule
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule { 
+
+  // Can't be single type as it uses multiple reducer at once
+  // constructor(private _ngRedux: NgRedux<ITaskState>, private _devTools: DevToolsExtension) {
+
+    constructor(private _ngRedux: NgRedux<any>, private _devTools: DevToolsExtension) {
+
+    let enhancer = _devTools.enhancer() ? [_devTools.enhancer()] : [];
+
+    _ngRedux.configureStore(combine, {}, [], enhancer);
+    // console.log('config-------',enhancer);
+    console.log(this._ngRedux.getState());
+
+  }
+
+}
