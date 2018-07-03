@@ -6,14 +6,14 @@
   <!-- End Notes Header -->
   <section class="testing-container">
     <button type="button" class="btn btn-cta" (click)="LoadNotes()">
-        Load notes
-      </button>
+      Load notes
+    </button>
     <button type="button" class="btn btn-cta" (click)="clearNotes()">
-        Clear notes
-      </button>
+      Clear notes
+    </button>
   </section>
   <!-- Note -->
-  <section class="notes" *ngIf="notesDt && notesDt.length" [class.max-height]="isMaxHeight" >
+  <section class="notes" *ngIf="notesDt && notesDt.length" [class.max-height]="isMaxHeight">
 
     <ul class="note-list-container" appHeightMatch (changeHeight)="hasChangeHandler($event)">
 
@@ -37,7 +37,8 @@
 
       <!-- Add Note -->
       <div class="note-user-input-container">
-        <textarea class="note-user-input" name="note-user-input" id="note-user-input" cols="30" rows="10" #textCount formControlName="userNote" maxlength="2000"></textarea>
+        <textarea class="note-user-input" name="note-user-input" id="note-user-input" cols="30" rows="10" #textCount formControlName="userNote"
+          maxlength="2000"></textarea>
       </div>
 
       <!-- Add Note CTA -->

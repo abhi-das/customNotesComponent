@@ -17,7 +17,10 @@ import { Observable } from 'rxjs';
   encapsulation: ViewEncapsulation.None
 })
 export class NotesComponent implements OnInit {
-  constructor(private _noteServices: NotesService, private _ngRedux: NgRedux<any>) {}
+  constructor(
+    private _noteServices: NotesService,
+    private _ngRedux: NgRedux<any>
+  ) {}
 
   noteForm: FormGroup;
   notesDt: Array<{}>;
@@ -28,15 +31,14 @@ export class NotesComponent implements OnInit {
   @select('Task') taskStore: Observable<any>;
 
   ngOnInit() {
-
-    this.taskStore.subscribe(res => {
-            
+    this.taskStore.subscribe(
+      res => {
         console.log(this._ngRedux.getState().Task);
-
-      }, error => {
-          console.error(error); 
-      });
-    
+      },
+      error => {
+        console.error(error);
+      }
+    );
 
     this.user = {
       name: 'Meichol Chevron'
@@ -61,15 +63,13 @@ export class NotesComponent implements OnInit {
     this.notesDt.unshift(newNote);
     this.noteForm.reset();
 
-    let tk = {
+    const tk = {
       name: 'new',
       desc: 'Exercitation nulla eiusmod qui aute nostrud dolor enim ut minim.',
       date: new Date()
-    }
+    };
 
-    this._ngRedux.dispatch({ type: 'ADD_TASK',  tasks: tk });
-
-    
+    this._ngRedux.dispatch({ type: 'ADD_TASK', tasks: tk });
   }
 
   LoadNotes(): void {
@@ -103,4 +103,3 @@ export class NotesComponent implements OnInit {
     // console.log(this.heightLimit,' ...isMax...', currentHeight);
   }
 }
-

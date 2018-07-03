@@ -6,20 +6,20 @@ export interface ITask {
     date: Date;
 }
 export interface ITaskState {
-    tasks: ITask[]
+    tasks: ITask[];
 }
 export const INITIAL_STATE: ITaskState = {
-    tasks: []
+    tasks: [];
 };
 
 // Benefit Interface
 export interface IBenefit {
-    name: string,
-    desc: string
+    name: string;
+    desc: string;
 }
 export interface IBenefitState {
-    benefits: IBenefit[]
+    benefits: IBenefit[];
 }
 export const INITIAL_BENEFIT_STATE: IBenefitState = {
     benefits: []
-}
+};
