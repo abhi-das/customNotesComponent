@@ -1,0 +1,18 @@
+.some-template {
+    width: 50%;
+    
+    border: 1px solid #807777;
+    padding: .5em;
+}
+
+.some-container {
+    width: 100%;
+    text-align: center;
+    margin-top: 1em;
+
+    & div {
+        display: inline-block;
+        vertical-align: middle;
+        width: 30%;
+    }
+}

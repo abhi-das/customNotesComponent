@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { NotesService } from './notes.service';
 
 import { FormControl, FormGroup } from '@angular/forms';
@@ -13,7 +13,8 @@ import { Observable } from 'rxjs';
   selector: 'app-notes',
   templateUrl: './notes.component.html',
   styleUrls: ['./notes.component.scss'],
-  providers: [NotesService]
+  providers: [NotesService],
+  encapsulation: ViewEncapsulation.None
 })
 export class NotesComponent implements OnInit {
   constructor(private _noteServices: NotesService, private _ngRedux: NgRedux<any>) {}

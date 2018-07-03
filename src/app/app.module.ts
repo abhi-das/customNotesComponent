@@ -10,12 +10,14 @@ import { HeightMatchDirective } from './common/directive/height-match.directive'
 import { NgReduxModule, NgRedux, DevToolsExtension } from '@angular-redux/store';
 import { IBenefitState, INITIAL_BENEFIT_STATE, ITaskState, INITIAL_STATE } from './reducers/state';
 import { combine } from './reducers/reducers';
+import { TemplateRefComponent } from './template-ref/template-ref.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NotesComponent,
-    HeightMatchDirective
+    HeightMatchDirective,
+    TemplateRefComponent
   ],
   imports: [
     BrowserModule,
